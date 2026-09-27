@@ -1,0 +1,81 @@
+# ==========================================
+# Node.js
+# ==========================================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# ==========================================
+# Environment variables
+# ==========================================
+
+.env
+.env.local
+.env.*.local
+
+
+# ==========================================
+# WebdriverIO
+# ==========================================
+
+# Screenshots / evidências
+screenshots/
+screenshots/**/*.png
+screenshots/**/*.jpg
+screenshots/**/*.jpeg
+
+# Vídeos, caso utilize
+videos/
+
+# Logs
+logs/
+*.log
+
+
+# ==========================================
+# Allure
+# ==========================================
+
+allure-results/
+allure-report/
+
+
+# ==========================================
+# Test reports
+# ==========================================
+
+test-results/
+reports/
+
+
+# ==========================================
+# OS
+# ==========================================
+
+.DS_Store
+Thumbs.db
+
+
+# ==========================================
+# IDEs / Editors
+# ==========================================
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+.idea/
+*.iml
+
+
+# ==========================================
+# Temporary files
+# ==========================================
+
+*.tmp
+*.temp
+*.swp
