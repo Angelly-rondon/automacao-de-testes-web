@@ -1,6 +1,6 @@
 import { expect } from '@wdio/globals'
 import NavLoggedInComponent from '../../pageobjects/components/navLoggedIn.component.ts'
-import { loginWithValidUser } from '../../data/users.ts'
+import { loginWithValidUser } from '../../data/users.data.ts'
 import ProductsPage from '../../pageobjects/pages/products.page.ts'
 import CartPage from '../../pageobjects/pages/cart.page.ts'
 import ProductDetailsPage from '../../pageobjects/pages/product.details.page.ts'
