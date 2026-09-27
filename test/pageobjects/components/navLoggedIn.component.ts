@@ -5,6 +5,10 @@ class NavLoggedInComponent {
         return $('a[href="/logout"]')
     }
 
+    public get btnDeleteAccount(){
+        return $('a[href="/delete_account"]')
+    }
+
     public get products() {
         return $('a[href="/products"]')
     }
@@ -13,9 +17,14 @@ class NavLoggedInComponent {
         return $('b=Availability:')
     }
 
-    public get userNameNavBar() {
-        return $('b=Automação Testes Web')
+    public userNameNavBar(userName: string) {
+        return $(`b=${userName}`)
     }
+
+    public async deleteAccount(){
+        await this.btnDeleteAccount.click()
+    }
+
 }
 
 export default new NavLoggedInComponent()
