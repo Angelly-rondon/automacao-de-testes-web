@@ -13,7 +13,7 @@ describe('Authentication', () => {
     it('should login with valid credentials', async () => {
         await LoginPage.login(
             process.env.TEST_USER_EMAIL!,
-            process.env.TEST_USER_PASSWORD!
+            process.env.TEST_USER_PASSWORD!,
         )
 
         await expect(NavLoggedInComponent.logout).toBeDisplayed() //verifica se foi logado com sucesso
@@ -24,7 +24,7 @@ describe('Authentication', () => {
     it('should not login with e-mail not registered ', async () => {
         await LoginPage.login(
             'automation@gmail.com',
-            process.env.TEST_USER_PASSWORD!
+            process.env.TEST_USER_PASSWORD!,
         )
 
         await expect(LoginPage.invalidLoginErrorMessage).toBeDisplayed() //verifica a mensagem de erro
@@ -32,10 +32,7 @@ describe('Authentication', () => {
 
     //Login com senha inválida
     it('should not login with invalid password', async () => {
-        await LoginPage.login(
-            process.env.TEST_USER_EMAIL!,
-            'Password'
-        )
+        await LoginPage.login(process.env.TEST_USER_EMAIL!, 'Password')
 
         await expect(LoginPage.invalidLoginErrorMessage).toBeDisplayed()
     })
@@ -43,7 +40,10 @@ describe('Authentication', () => {
     //Login com campos vazios
     it('should not login when mandatory fields are empty', async () => {
         await expect(LoginPage.inputEmail).toHaveAttribute('required', 'true')
-        await expect(LoginPage.inputPassword).toHaveAttribute('required', 'true')
+        await expect(LoginPage.inputPassword).toHaveAttribute(
+            'required',
+            'true',
+        )
 
         await LoginPage.login('', '')
 
@@ -60,9 +60,9 @@ describe('Authentication', () => {
 
         //Verificações do logout em si
         await NavLoggedInComponent.logout.click()
-        await expect(browser).toHaveUrl('https://www.automationexercise.com/login')
+        await expect(browser).toHaveUrl(
+            'https://www.automationexercise.com/login',
+        )
         await expect($('h2=Login to your account')).toBeDisplayed()
     })
-
 })
-

@@ -19,7 +19,8 @@ describe('Product Cart', () => {
         await ProductDetailsPage.viewCart.click()
 
         await expect(CartPage.cartProducts).toBeElementsArrayOfSize(1)
-        await expect(browser).toHaveUrl('https://www.automationexercise.com/view_cart')
-
+        await expect(browser).toHaveUrl(
+            'https://www.automationexercise.com/view_cart',
+        )
     })
 })

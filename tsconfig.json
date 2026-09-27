@@ -3,10 +3,7 @@
         "moduleResolution": "node",
         "module": "ESNext",
         "target": "es2022",
-        "lib": [
-            "es2022",
-            "dom"
-        ],
+        "lib": ["es2022", "dom"],
         "types": [
             "node",
             "@wdio/globals/types",
@@ -23,8 +20,5 @@
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true
     },
-    "include": [
-        "test/specs",
-        "wdio.conf.ts"
-    ]
+    "include": ["test/specs", "wdio.conf.ts"]
 }

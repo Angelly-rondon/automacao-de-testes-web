@@ -1,4 +1,3 @@
-
 import { expect } from '@wdio/globals'
 import NavLoggedInComponent from '../../pageobjects/components/navLoggedIn.component.js'
 import { loginWithValidUser } from '../../data/users.ts'
@@ -16,7 +15,8 @@ describe('Navigation', () => {
         await ProductsPage.productsDetails.click()
 
         await expect(NavLoggedInComponent.availability).toBeDisplayed() //verifica informação da tela de detalhes do produto
-        await expect(browser).toHaveUrl('https://www.automationexercise.com/product_details/1')
+        await expect(browser).toHaveUrl(
+            'https://www.automationexercise.com/product_details/1',
+        )
     })
-
 })

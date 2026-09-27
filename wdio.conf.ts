@@ -2,10 +2,7 @@ export const config: WebdriverIO.Config = {
     runner: 'local',
     tsConfigPath: './tsconfig.json',
 
-
-    specs: [
-        './test/specs/**/*.ts'
-    ],
+    specs: ['./test/specs/**/*.ts'],
 
     exclude: [
         // 'path/to/excluded/files'
@@ -13,10 +10,11 @@ export const config: WebdriverIO.Config = {
 
     maxInstances: 10,
 
-    capabilities: [{
-        browserName: 'chrome'
-    }],
-
+    capabilities: [
+        {
+            browserName: 'chrome',
+        },
+    ],
 
     logLevel: 'info',
     bail: 0,
@@ -28,10 +26,13 @@ export const config: WebdriverIO.Config = {
 
     reporters: [
         'spec',
-        ['allure', {
-            outputDir: 'allure-results',
-            disableWebdriverScreenshotsReporting: false
-        }]
+        [
+            'allure',
+            {
+                outputDir: 'allure-results',
+                disableWebdriverScreenshotsReporting: false,
+            },
+        ],
     ],
 
     // Captura screenshot ao final de cada teste para anexar ao relatório Allure
@@ -41,7 +42,6 @@ export const config: WebdriverIO.Config = {
 
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 60000,
     },
-
 }
