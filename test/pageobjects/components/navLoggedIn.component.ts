@@ -13,6 +13,10 @@ class NavLoggedInComponent {
         return $('a[href="/products"]')
     }
 
+    public get cart(){
+        return $('a[href="/view_cart"]')
+    }
+
     public get availability() {
         return $('b=Availability:')
     }
