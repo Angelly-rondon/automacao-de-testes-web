@@ -6,7 +6,8 @@ export function createSuccesfullySignupData() {
         name: faker.person.firstName(),
         email: faker.internet.email(),
         password: faker.internet.password(),
-        dateOfBirth: { // dropdown
+        dateOfBirth: {
+            // dropdown
             day: '15',
             month: 'June',
             year: '2000',

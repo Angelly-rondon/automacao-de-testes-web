@@ -39,10 +39,10 @@ class LoginPage extends Page {
 
     //Acessa o formulário de cadastro
     public async accessSignupPage(name: string, email: string) {
-    await this.inputNameSignup.setValue(name)
-    await this.inputEmailSignup.setValue(email)
-    await this.btnSignup.click()
-}
+        await this.inputNameSignup.setValue(name)
+        await this.inputEmailSignup.setValue(email)
+        await this.btnSignup.click()
+    }
 
     public open() {
         return super.open('login')

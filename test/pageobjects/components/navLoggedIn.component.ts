@@ -5,7 +5,7 @@ class NavLoggedInComponent {
         return $('a[href="/logout"]')
     }
 
-    public get btnDeleteAccount(){
+    public get btnDeleteAccount() {
         return $('a[href="/delete_account"]')
     }
 
@@ -13,7 +13,7 @@ class NavLoggedInComponent {
         return $('a[href="/products"]')
     }
 
-    public get cart(){
+    public get cart() {
         return $('a[href="/view_cart"]')
     }
 
@@ -25,10 +25,9 @@ class NavLoggedInComponent {
         return $(`b=${userName}`)
     }
 
-    public async deleteAccount(){
+    public async deleteAccount() {
         await this.btnDeleteAccount.click()
     }
-
 }
 
 export default new NavLoggedInComponent()

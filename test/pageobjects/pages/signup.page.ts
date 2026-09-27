@@ -3,7 +3,6 @@ import Page from '../page.js'
 import { createSuccesfullySignupData } from '../../data/signup.data.js'
 
 class SignupPage extends Page {
-
     public get titleMr() {
         return $('#id_gender1')
     }
@@ -80,7 +79,9 @@ class SignupPage extends Page {
         return $('button[data-qa="create-account"]')
     }
 
-    public async completeSignup(signupData: ReturnType<typeof createSuccesfullySignupData>) {
+    public async completeSignup(
+        signupData: ReturnType<typeof createSuccesfullySignupData>,
+    ) {
         // Title - radio button
         if (signupData.title === 'Mr') {
             await this.titleMr.click()
@@ -93,15 +94,15 @@ class SignupPage extends Page {
 
         // Date of birth - dropdown
         await this.dateOfBirthDay.selectByVisibleText(
-            signupData.dateOfBirth.day
+            signupData.dateOfBirth.day,
         )
 
         await this.dateOfBirthMonth.selectByVisibleText(
-            signupData.dateOfBirth.month
+            signupData.dateOfBirth.month,
         )
 
         await this.dateOfBirthYear.selectByVisibleText(
-            signupData.dateOfBirth.year
+            signupData.dateOfBirth.year,
         )
 
         // Newsletter - checkbox
@@ -134,7 +135,6 @@ class SignupPage extends Page {
 
         await this.btnCreateAccount.click()
     }
-
 }
 
 export default new SignupPage()

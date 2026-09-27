@@ -17,7 +17,9 @@ describe('Authentication', () => {
         )
 
         await expect(NavLoggedInComponent.logout).toBeDisplayed() //verifica se foi logado com sucesso
-        await expect(NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!)).toBeDisplayed() //verifica a conta logada
+        await expect(
+            NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!),
+        ).toBeDisplayed() //verifica a conta logada
     })
 
     //Login com e-mail não cadastrado
@@ -39,7 +41,10 @@ describe('Authentication', () => {
 
     //Login com campos vazios
     it('should not login when mandatory fields are empty', async () => {
-        await expect(LoginPage.inputEmailLogin).toHaveAttribute('required', 'true')
+        await expect(LoginPage.inputEmailLogin).toHaveAttribute(
+            'required',
+            'true',
+        )
         await expect(LoginPage.inputPasswordLogin).toHaveAttribute(
             'required',
             'true',
@@ -48,7 +53,9 @@ describe('Authentication', () => {
         await LoginPage.login('', '')
 
         await expect(NavLoggedInComponent.logout).not.toBeDisplayed() //verifica se está logado
-        await expect(NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!)).not.toBeDisplayed() //verifica que não tem uma conta logada
+        await expect(
+            NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!),
+        ).not.toBeDisplayed() //verifica que não tem uma conta logada
     })
 
     //Logout após um login
@@ -56,7 +63,9 @@ describe('Authentication', () => {
         await loginWithValidUser()
 
         await expect(NavLoggedInComponent.logout).toBeDisplayed() //verifica se foi logado com sucesso
-        await expect(NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!)).toBeDisplayed() //verifica a conta logada
+        await expect(
+            NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!),
+        ).toBeDisplayed() //verifica a conta logada
 
         //Verificações do logout em si
         await NavLoggedInComponent.logout.click()
