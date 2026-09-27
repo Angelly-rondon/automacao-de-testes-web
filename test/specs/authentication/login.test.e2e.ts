@@ -3,7 +3,7 @@ import LoginPage from '../../pageobjects/pages/login.page.js'
 import NavLoggedInComponent from '../../pageobjects/components/navLoggedIn.component.ts'
 import { loginWithValidUser } from '../../data/users.ts'
 
-describe('Login in Automation Exercise', () => {
+describe('Authentication', () => {
     beforeEach(async () => {
         await browser.deleteCookies()
         await LoginPage.open()
@@ -41,7 +41,7 @@ describe('Login in Automation Exercise', () => {
     })
 
     //Login com campos vazios
-    it('should not log in with mandatory fields empty.', async () => {
+    it('should not login when mandatory fields are empty', async () => {
         await expect(LoginPage.inputEmail).toHaveAttribute('required', 'true')
         await expect(LoginPage.inputPassword).toHaveAttribute('required', 'true')
 
@@ -52,7 +52,7 @@ describe('Login in Automation Exercise', () => {
     })
 
     //Logout após um login
-    it('should logout', async () => {
+    it('should logout successfully', async () => {
         await loginWithValidUser()
 
         await expect(NavLoggedInComponent.logout).toBeDisplayed() //verifica se foi logado com sucesso
