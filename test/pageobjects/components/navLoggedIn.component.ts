@@ -10,10 +10,6 @@ class NavLoggedInComponent {
         return $('a[href="/products"]');
     }
 
-    public get productsDetails() {
-        return $('a[href="/product_details/1"]');
-    }
-
     public get availability() {
         return $('b=Availability:');
     }
