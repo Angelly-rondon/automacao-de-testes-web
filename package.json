@@ -12,6 +12,7 @@
         "@wdio/mocha-framework": "^9.32.0",
         "@wdio/spec-reporter": "^9.32.0",
         "allure-commandline": "^2.46.1",
+        "cross-env": "^10.1.0",
         "eslint": "^10.11.0",
         "expect-webdriverio": "^6.1.0",
         "prettier": "3.9.9",
@@ -19,6 +20,7 @@
     },
     "scripts": {
         "wdio": "wdio run ./wdio.conf.ts",
+        "wdio:cloud": "cross-env TEST_ENV=cloud wdio run ./wdio.conf.ts",
         "lint": "eslint .",
         "format": "prettier . --write",
         "format:check": "prettier . --check",

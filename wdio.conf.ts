@@ -1,22 +1,35 @@
 import * as fs from 'node:fs'
 import * as os from 'node:os'
 
+const isCloud = process.env.TEST_ENV === 'cloud'
+
 export const config: WebdriverIO.Config = {
     runner: 'local',
     tsConfigPath: './tsconfig.json',
 
+    user: isCloud ? process.env.LT_USERNAME : undefined,
+    key: isCloud ? process.env.LT_ACCESS_KEY : undefined,
+
     specs: ['./test/specs/**/*.ts'],
 
-    exclude: [
-        // 'path/to/excluded/files'
-    ],
+    exclude: [],
 
     maxInstances: 10,
 
     capabilities: [
-        {
-            browserName: 'chrome',
-        },
+        isCloud
+            ? {
+                  browserName: 'chrome',
+                  browserVersion: 'latest',
+                  platformName: 'Windows 11',
+                  'LT:Options': {
+                      build: 'Automacao de Testes Web',
+                      name: 'WebDriverIO Tests',
+                  },
+              }
+            : {
+                  browserName: 'chrome',
+              },
     ],
 
     logLevel: 'info',
@@ -43,14 +56,19 @@ export const config: WebdriverIO.Config = {
     before: async function () {
         const capabilities = browser.capabilities
 
+        const browserName = capabilities.browserName ?? 'Unknown'
+        const browserVersion = capabilities.browserVersion ?? 'Unknown'
+        const operatingSystem =
+            capabilities.platformName ?? os.type().replace('_NT', '')
+
         const environment = [
-            `Browser=Google Chrome`,
-            `Browser Version=${capabilities.browserVersion ?? 'Unknown'}`,
-            `Operating System=${os.type().replace('_NT', '')}`,
-            `OS Version=${os.version()}`,
+            `Browser=${browserName}`,
+            `Browser Version=${browserVersion}`,
+            `Operating System=${operatingSystem}`,
         ].join('\n')
 
         fs.mkdirSync('allure-results', { recursive: true })
+
         fs.writeFileSync(
             'allure-results/environment.properties',
             environment,
