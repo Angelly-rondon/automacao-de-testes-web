@@ -30,14 +30,12 @@ class LoginPage extends Page {
         return $('p=Your email or password is incorrect!')
     }
 
-    //Realiza o login
     public async login(email: string, password: string) {
         await this.inputEmailLogin.setValue(email)
         await this.inputPasswordLogin.setValue(password)
         await this.btnLogin.click()
     }
 
-    //Acessa o formulário de cadastro
     public async accessSignupPage(name: string, email: string) {
         await this.inputNameSignup.setValue(name)
         await this.inputEmailSignup.setValue(email)

@@ -9,13 +9,12 @@ describe('Product Search', () => {
         await loginWithValidUser()
     })
 
-    //Pesquisa de um produto
     it('should find a product after search', async () => {
         const productName = 'Sleeveless Dress'
 
         await NavLoggedInComponent.products.click()
         await ProductsPage.productSearch(productName)
 
-        await expect(ProductsPage.productName(productName)).toBeDisplayed() //verifica se o produto apareceu na busca
+        await expect(ProductsPage.productName(productName)).toBeDisplayed() 
     })
 })

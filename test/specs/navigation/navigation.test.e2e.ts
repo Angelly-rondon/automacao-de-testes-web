@@ -9,12 +9,11 @@ describe('Navigation', () => {
         await loginWithValidUser()
     })
 
-    //Navegação entre páginas
     it('should navigate between pages', async () => {
         await NavLoggedInComponent.products.click()
         await ProductsPage.productsDetails.click()
 
-        await expect(NavLoggedInComponent.availability).toBeDisplayed() //verifica informação da tela de detalhes do produto
+        await expect(NavLoggedInComponent.availability).toBeDisplayed() 
         await expect(browser).toHaveUrl(
             'https://www.automationexercise.com/product_details/1',
         )

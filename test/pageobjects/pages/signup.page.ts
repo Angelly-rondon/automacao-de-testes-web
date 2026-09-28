@@ -82,17 +82,14 @@ class SignupPage extends Page {
     public async completeSignup(
         signupData: ReturnType<typeof createSuccesfullySignupData>,
     ) {
-        // Title - radio button
         if (signupData.title === 'Mr') {
             await this.titleMr.click()
         } else if (signupData.title === 'Mrs') {
             await this.titleMrs.click()
         }
 
-        // Password
         await this.inputPassword.setValue(signupData.password)
 
-        // Date of birth - dropdown
         await this.dateOfBirthDay.selectByVisibleText(
             signupData.dateOfBirth.day,
         )
@@ -105,24 +102,20 @@ class SignupPage extends Page {
             signupData.dateOfBirth.year,
         )
 
-        // Newsletter - checkbox
         if (signupData.newsletter) {
             await this.newsletter.click()
         }
 
-        // Special offers - checkbox
         if (signupData.specialOffers) {
             await this.specialOffers.click()
         }
 
-        // Address information
         await this.inputFirstName.setValue(signupData.firstName)
 
         await this.inputLastName.setValue(signupData.lastName)
 
         await this.inputAddress.setValue(signupData.address)
 
-        // Country - dropdown
         await this.country.selectByVisibleText(signupData.country)
 
         await this.inputState.setValue(signupData.state)

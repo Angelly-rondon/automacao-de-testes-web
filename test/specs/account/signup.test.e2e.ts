@@ -14,27 +14,24 @@ describe('Account Registration', () => {
     it('should register a new account', async () => {
         const signupData = createSuccesfullySignupData()
 
-        // Acessa a página de cadastro
         await LoginPage.accessSignupPage(signupData.name, signupData.email)
 
-        // Verifica se o formulário de cadastro foi carregado
         await expect(browser).toHaveUrl(
             'https://www.automationexercise.com/signup',
         )
 
-        // Preenche e envia o cadastro
         await SignupPage.completeSignup(signupData)
 
         await AccountCreated.clickButtonContinue()
-        await expect(NavLoggedInComponent.logout).toBeDisplayed() //verifica se foi logado com sucesso
+        await expect(NavLoggedInComponent.logout).toBeDisplayed() 
         await expect(
             NavLoggedInComponent.userNameNavBar(signupData.name),
-        ).toBeDisplayed() //verifica a conta logada//validar se o user foi criado
+        ).toBeDisplayed() 
 
         await NavLoggedInComponent.deleteAccount()
-        await expect(NavLoggedInComponent.logout).not.toBeDisplayed() //verifica se não foi logado com sucesso
+        await expect(NavLoggedInComponent.logout).not.toBeDisplayed() 
         await expect(
             NavLoggedInComponent.userNameNavBar(signupData.name),
-        ).not.toBeDisplayed() //verifica se está deslogado
+        ).not.toBeDisplayed() 
     })
 })

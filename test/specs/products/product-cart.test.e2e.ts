@@ -11,7 +11,6 @@ describe('Product Cart', () => {
         await loginWithValidUser()
     })
 
-    //Adiciona um produto no carrinho
     it('should add a product in the cart', async () => {
         await NavLoggedInComponent.products.click()
         await ProductsPage.productsDetails.click()

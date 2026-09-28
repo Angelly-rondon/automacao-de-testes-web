@@ -9,37 +9,33 @@ describe('Authentication', () => {
         await LoginPage.open()
     })
 
-    //Login com sucesso
     it('should login with valid credentials', async () => {
         await LoginPage.login(
             process.env.TEST_USER_EMAIL!,
             process.env.TEST_USER_PASSWORD!,
         )
 
-        await expect(NavLoggedInComponent.logout).toBeDisplayed() //verifica se foi logado com sucesso
+        await expect(NavLoggedInComponent.logout).toBeDisplayed() 
         await expect(
             NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!),
-        ).toBeDisplayed() //verifica a conta logada
+        ).toBeDisplayed() 
     })
 
-    //Login com e-mail não cadastrado
     it('should not login with e-mail not registered ', async () => {
         await LoginPage.login(
             'automation@gmail.com',
             process.env.TEST_USER_PASSWORD!,
         )
 
-        await expect(LoginPage.invalidLoginErrorMessage).toBeDisplayed() //verifica a mensagem de erro
+        await expect(LoginPage.invalidLoginErrorMessage).toBeDisplayed() 
     })
 
-    //Login com senha inválida
     it('should not login with invalid password', async () => {
         await LoginPage.login(process.env.TEST_USER_EMAIL!, 'Password')
 
         await expect(LoginPage.invalidLoginErrorMessage).toBeDisplayed()
     })
 
-    //Login com campos vazios
     it('should not login when mandatory fields are empty', async () => {
         await expect(LoginPage.inputEmailLogin).toHaveAttribute(
             'required',
@@ -52,22 +48,20 @@ describe('Authentication', () => {
 
         await LoginPage.login('', '')
 
-        await expect(NavLoggedInComponent.logout).not.toBeDisplayed() //verifica se está logado
+        await expect(NavLoggedInComponent.logout).not.toBeDisplayed() 
         await expect(
             NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!),
-        ).not.toBeDisplayed() //verifica que não tem uma conta logada
+        ).not.toBeDisplayed() 
     })
 
-    //Logout após um login
     it('should logout successfully', async () => {
         await loginWithValidUser()
 
-        await expect(NavLoggedInComponent.logout).toBeDisplayed() //verifica se foi logado com sucesso
+        await expect(NavLoggedInComponent.logout).toBeDisplayed() 
         await expect(
             NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!),
-        ).toBeDisplayed() //verifica a conta logada
+        ).toBeDisplayed() 
 
-        //Verificações do logout em si
         await NavLoggedInComponent.logout.click()
         await expect(browser).toHaveUrl(
             'https://www.automationexercise.com/login',

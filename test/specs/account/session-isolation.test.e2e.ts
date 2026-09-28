@@ -14,25 +14,24 @@ describe('Session Isolation', () => {
         await browser.deleteCookies()
     })
 
-    //
     it('should not share cart between users', async () => {
         await loginWithValidUser()
 
-        await expect(NavLoggedInComponent.logout).toBeDisplayed() //verifica se foi feito o login com sucesso
+        await expect(NavLoggedInComponent.logout).toBeDisplayed()
         await expect(
             NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!),
-        ).toBeDisplayed() //verifica a conta logada
+        ).toBeDisplayed() 
 
         await NavLoggedInComponent.products.click()
         await ProductsPage.productsDetails.click()
-        await ProductDetailsPage.btnAddToCart.click() //adiciona produto no carrinho
+        await ProductDetailsPage.btnAddToCart.click() 
 
         await ProductDetailsPage.viewCart.click()
-        await expect(CartPage.cartProducts).toBeElementsArrayOfSize(1) //verifica se o item foi adicionado ao carrinho
+        await expect(CartPage.cartProducts).toBeElementsArrayOfSize(1) 
 
         await NavLoggedInComponent.logout.click()
 
-        await expect(NavLoggedInComponent.logout).not.toBeDisplayed() //verifica se está deslogado
+        await expect(NavLoggedInComponent.logout).not.toBeDisplayed()
         await expect(
             NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!),
         ).not.toBeDisplayed()
@@ -45,14 +44,14 @@ describe('Session Isolation', () => {
             alternativeTestUser.passwordLogin,
         )
 
-        await expect(NavLoggedInComponent.logout).toBeDisplayed() //verifica se foi logado com sucesso
+        await expect(NavLoggedInComponent.logout).toBeDisplayed() 
         await expect(
             NavLoggedInComponent.userNameNavBar(
                 process.env.TEST_USER_NAME_ALTERNATIVE!,
             ),
-        ).toBeDisplayed() // verifica a conta logada
+        ).toBeDisplayed() 
 
-        await NavLoggedInComponent.cart.click() //acessa o carrinho
-        await expect(CartPage.cartProducts).toBeElementsArrayOfSize(0) //verifica que não há itens adicionados
+        await NavLoggedInComponent.cart.click()
+        await expect(CartPage.cartProducts).toBeElementsArrayOfSize(0) 
     })
 })
