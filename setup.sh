@@ -33,26 +33,52 @@ npm install
 
 echo "✅ Dependências instaladas."
 
-# 4. Criar diretórios necessários
+# 4. Configurar variáveis de ambiente
 echo ""
-echo "📁 Verificando diretórios..."
+echo "🔐 Verificando arquivo .env..."
 
-mkdir -p screenshots
+if [ ! -f .env ]; then
+    if [ -f .env.example ]; then
+        cp .env.example .env
+        echo "✅ Arquivo .env criado a partir do .env.example."
+        echo "⚠️ Preencha as variáveis de ambiente antes de executar os testes."
+    else
+        echo "⚠️ Arquivo .env.example não encontrado."
+        echo "Crie o arquivo .env manualmente antes de executar os testes."
+    fi
+else
+    echo "✅ Arquivo .env já existe."
+fi
+
+# 5. Criar diretório de resultados do Allure
+echo ""
+echo "📁 Verificando diretório do Allure..."
+
 mkdir -p allure-results
-mkdir -p allure-report
 
-echo "✅ Diretórios verificados."
+echo "✅ Diretório allure-results verificado."
 
-# 5. Finalização
+# 6. Finalização
 echo ""
 echo "======================================"
 echo "✅ Ambiente configurado com sucesso!"
 echo "======================================"
 
 echo ""
-echo "Para executar os testes:"
+echo "Antes da execução, confira o arquivo .env."
+
+echo ""
+echo "Para executar os testes localmente:"
 echo "  npm run wdio"
 
 echo ""
-echo "Para executar o Allure Report:"
-echo "  npx allure open allure-report"
+echo "Para executar os testes no LambdaTest:"
+echo "  npm run wdio:cloud"
+
+echo ""
+echo "Para gerar o Allure Report:"
+echo "  npm run allure:generate"
+
+echo ""
+echo "Para abrir o Allure Report:"
+echo "  npm run allure:open"
