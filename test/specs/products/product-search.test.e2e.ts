@@ -15,6 +15,6 @@ describe('Product Search', () => {
         await NavLoggedInComponent.products.click()
         await ProductsPage.productSearch(productName)
 
-        await expect(ProductsPage.productName(productName)).toBeDisplayed() 
+        await expect(ProductsPage.productName(productName)).toBeDisplayed()
     })
 })

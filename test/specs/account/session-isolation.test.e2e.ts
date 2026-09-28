@@ -20,14 +20,14 @@ describe('Session Isolation', () => {
         await expect(NavLoggedInComponent.logout).toBeDisplayed()
         await expect(
             NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!),
-        ).toBeDisplayed() 
+        ).toBeDisplayed()
 
         await NavLoggedInComponent.products.click()
         await ProductsPage.productsDetails.click()
-        await ProductDetailsPage.btnAddToCart.click() 
+        await ProductDetailsPage.btnAddToCart.click()
 
         await ProductDetailsPage.viewCart.click()
-        await expect(CartPage.cartProducts).toBeElementsArrayOfSize(1) 
+        await expect(CartPage.cartProducts).toBeElementsArrayOfSize(1)
 
         await NavLoggedInComponent.logout.click()
 
@@ -44,14 +44,14 @@ describe('Session Isolation', () => {
             alternativeTestUser.passwordLogin,
         )
 
-        await expect(NavLoggedInComponent.logout).toBeDisplayed() 
+        await expect(NavLoggedInComponent.logout).toBeDisplayed()
         await expect(
             NavLoggedInComponent.userNameNavBar(
                 process.env.TEST_USER_NAME_ALTERNATIVE!,
             ),
-        ).toBeDisplayed() 
+        ).toBeDisplayed()
 
         await NavLoggedInComponent.cart.click()
-        await expect(CartPage.cartProducts).toBeElementsArrayOfSize(0) 
+        await expect(CartPage.cartProducts).toBeElementsArrayOfSize(0)
     })
 })

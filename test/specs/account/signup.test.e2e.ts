@@ -23,15 +23,15 @@ describe('Account Registration', () => {
         await SignupPage.completeSignup(signupData)
 
         await AccountCreated.clickButtonContinue()
-        await expect(NavLoggedInComponent.logout).toBeDisplayed() 
+        await expect(NavLoggedInComponent.logout).toBeDisplayed()
         await expect(
             NavLoggedInComponent.userNameNavBar(signupData.name),
-        ).toBeDisplayed() 
+        ).toBeDisplayed()
 
         await NavLoggedInComponent.deleteAccount()
-        await expect(NavLoggedInComponent.logout).not.toBeDisplayed() 
+        await expect(NavLoggedInComponent.logout).not.toBeDisplayed()
         await expect(
             NavLoggedInComponent.userNameNavBar(signupData.name),
-        ).not.toBeDisplayed() 
+        ).not.toBeDisplayed()
     })
 })

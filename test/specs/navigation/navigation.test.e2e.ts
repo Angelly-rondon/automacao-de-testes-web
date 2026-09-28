@@ -13,7 +13,7 @@ describe('Navigation', () => {
         await NavLoggedInComponent.products.click()
         await ProductsPage.productsDetails.click()
 
-        await expect(NavLoggedInComponent.availability).toBeDisplayed() 
+        await expect(NavLoggedInComponent.availability).toBeDisplayed()
         await expect(browser).toHaveUrl(
             'https://www.automationexercise.com/product_details/1',
         )

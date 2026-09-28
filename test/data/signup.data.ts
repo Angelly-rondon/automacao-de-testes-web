@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 
 export function createSuccesfullySignupData() {
     return {
-        title: 'Mr', 
+        title: 'Mr',
         name: faker.person.firstName(),
         email: faker.internet.email(),
         password: faker.internet.password(),
@@ -11,8 +11,8 @@ export function createSuccesfullySignupData() {
             month: 'June',
             year: '2000',
         },
-        newsletter: true, 
-        specialOffers: false, 
+        newsletter: true,
+        specialOffers: false,
         firstName: faker.person.firstName(),
         lastName: faker.person.lastName(),
         address: faker.location.streetAddress(),

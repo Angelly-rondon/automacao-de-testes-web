@@ -15,10 +15,10 @@ describe('Authentication', () => {
             process.env.TEST_USER_PASSWORD!,
         )
 
-        await expect(NavLoggedInComponent.logout).toBeDisplayed() 
+        await expect(NavLoggedInComponent.logout).toBeDisplayed()
         await expect(
             NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!),
-        ).toBeDisplayed() 
+        ).toBeDisplayed()
     })
 
     it('should not login with e-mail not registered ', async () => {
@@ -27,7 +27,7 @@ describe('Authentication', () => {
             process.env.TEST_USER_PASSWORD!,
         )
 
-        await expect(LoginPage.invalidLoginErrorMessage).toBeDisplayed() 
+        await expect(LoginPage.invalidLoginErrorMessage).toBeDisplayed()
     })
 
     it('should not login with invalid password', async () => {
@@ -48,19 +48,19 @@ describe('Authentication', () => {
 
         await LoginPage.login('', '')
 
-        await expect(NavLoggedInComponent.logout).not.toBeDisplayed() 
+        await expect(NavLoggedInComponent.logout).not.toBeDisplayed()
         await expect(
             NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!),
-        ).not.toBeDisplayed() 
+        ).not.toBeDisplayed()
     })
 
     it('should logout successfully', async () => {
         await loginWithValidUser()
 
-        await expect(NavLoggedInComponent.logout).toBeDisplayed() 
+        await expect(NavLoggedInComponent.logout).toBeDisplayed()
         await expect(
             NavLoggedInComponent.userNameNavBar(process.env.TEST_USER_NAME!),
-        ).toBeDisplayed() 
+        ).toBeDisplayed()
 
         await NavLoggedInComponent.logout.click()
         await expect(browser).toHaveUrl(
