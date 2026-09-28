@@ -69,10 +69,7 @@ export const config: WebdriverIO.Config = {
 
         fs.mkdirSync('allure-results', { recursive: true })
 
-        fs.writeFileSync(
-            'allure-results/environment.properties',
-            environment,
-        )
+        fs.writeFileSync('allure-results/environment.properties', environment)
     },
 
     // Captura screenshot ao final de cada teste para anexar ao relatório Allure
